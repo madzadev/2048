@@ -1,33 +1,84 @@
 <script>
+  let numbers = [
+    [0, 0, 0, 0],
+    [0, 2, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 2, 0],
+  ];
+
+  let colors = {
+    2: "pale",
+    4: "yellow",
+    8: "orange",
+    16: "tomato",
+    32: "crimson",
+  };
+
+  const createNumber = () => {
+    console.log("New number created");
+  };
+
+  //   const moveUp = ()=>{
+  // console.log('moved up')
+  //   }
+
+  //   const moveDown = ()=>{
+  // console.log('moved up')
+  //   };
+
+  const keyPress = (e) => {
+    switch (e.keyCode) {
+      case 38:
+        console.log("You pressed up");
+        break;
+      case 40:
+        console.log("You pressed down");
+        break;
+      case 37:
+        console.log("You pressed left");
+        break;
+      case 39:
+        console.log("You pressed right");
+        break;
+    }
+  };
 </script>
 
 <style>
-  main {
-    text-align: center;
-    padding: 1em;
-    max-width: 240px;
-    margin: 0 auto;
-  }
-
   h1 {
-    color: #ff3e00;
-    text-transform: uppercase;
-    font-size: 4em;
-    font-weight: 100;
+    text-align: center;
+    margin: 30px 0;
   }
 
-  @media (min-width: 640px) {
-    main {
-      max-width: none;
-    }
+  main {
+    max-width: 600px;
+    height: 600px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 20px;
+    border: 1px solid black;
+    background-color: grey;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .tile {
+    width: 100%;
+    height: 100%;
+    background-color: burlywood;
+    display: grid;
+    place-items: center;
+    font-size: 36px;
   }
 </style>
 
+<svelte:window on:keydown={keyPress} />
+
+<h1>2048 Game</h1>
 <main>
-  <h1>2048 Game</h1>
-  <p>
-    Visit the
-    <a href="https://svelte.dev/tutorial">Svelte tutorial</a>
-    to learn how to build Svelte apps.
-  </p>
+  {#each Array(16) as _, i}
+    <div class="tile">{i + 1}</div>
+  {/each}
 </main>
