@@ -48,6 +48,9 @@
   h1 {
     text-align: center;
     margin: 30px 0;
+    font-family: "Goldman", cursive;
+    color: #776e65;
+    font-size: 40px;
   }
 
   main {
@@ -58,19 +61,23 @@
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, 1fr);
     gap: 20px;
-    border: 1px solid black;
-    background-color: grey;
+    /* border: 1px solid black; */
+    background-color: #bbada0;
     padding: 20px;
     box-sizing: border-box;
+    border-radius: 5px;
   }
 
   .tile {
     width: 100%;
     height: 100%;
-    background-color: burlywood;
+    background-color: #eee4da;
     display: grid;
     place-items: center;
-    font-size: 36px;
+    font-size: 56px;
+    border-radius: 5px;
+    color: #776e65;
+    font-weight: bold;
   }
 </style>
 
