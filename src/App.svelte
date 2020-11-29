@@ -18,13 +18,13 @@
     console.log("New number created");
   };
 
-  //   const moveUp = ()=>{
-  // console.log('moved up')
-  //   }
+  const moveUp = () => {
+    console.log("moved up");
+  };
 
-  //   const moveDown = ()=>{
-  // console.log('moved up')
-  //   };
+  const moveDown = () => {
+    console.log("moved up");
+  };
 
   const keyPress = (e) => {
     switch (e.keyCode) {
