@@ -1,6 +1,6 @@
 <script>
   let numbers = [
-    [0, 0, 0, 0],
+    [0, 2, 4, 8],
     [0, 2, 0, 0],
     [0, 0, 0, 0],
     [0, 0, 2, 0],
@@ -26,6 +26,24 @@
     console.log("moved up");
   };
 
+  const moveRight = () => {
+    numbers.forEach((el, index) => {
+      let arr = el.filter((num) => num !== 0);
+      numbers[index] = arr;
+      numbers[index].unshift(...Array(4 - arr.length).fill(0));
+    });
+    console.log(numbers);
+  };
+
+  const moveLeft = () => {
+    numbers.forEach((el, index) => {
+      let arr = el.filter((num) => num !== 0);
+      numbers[index] = arr;
+      numbers[index].push(...Array(4 - arr.length).fill(0));
+    });
+    console.log(numbers);
+  };
+
   const keyPress = (e) => {
     switch (e.keyCode) {
       case 38:
@@ -35,10 +53,12 @@
         console.log("You pressed down");
         break;
       case 37:
-        console.log("You pressed left");
+        // console.log("You pressed left");
+        moveLeft();
         break;
       case 39:
         console.log("You pressed right");
+        moveRight();
         break;
     }
   };
