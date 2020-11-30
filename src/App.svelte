@@ -23,9 +23,7 @@
     console.log("game reseted");
   };
 
-  const createNumber = () => {
-    console.log("New number created");
-  };
+  const rand = () => Math.floor(Math.random() * Math.floor(3));
 
   const moveUp = () => {
     console.log("moved up");
@@ -38,8 +36,24 @@
   const moveRight = () => {
     numbers.forEach((el, index) => {
       let arr = el.filter((num) => num !== 0);
-      numbers[index] = arr;
-      numbers[index].unshift(...Array(4 - arr.length).fill(0));
+      let arr2 = [];
+      let summed = false;
+
+      arr.forEach((el, index) => {
+        if (el === arr[index + 1]) {
+          !summed && arr2.push(el * 2);
+          game.score += el * 2;
+          summed = true;
+        } else {
+          !summed && arr2.push(el);
+          summed = false;
+        }
+      });
+
+      console.log(arr2);
+
+      numbers[index] = arr2;
+      numbers[index].unshift(...Array(4 - arr2.length).fill(0));
     });
     console.log(numbers);
   };
@@ -48,13 +62,13 @@
     numbers.forEach((el, index) => {
       let arr = el.filter((num) => num !== 0);
 
-      console.log(arr);
       let arr2 = [];
       let summed = false;
 
       arr.forEach((el, index) => {
         if (el === arr[index + 1]) {
           !summed && arr2.push(el * 2);
+          game.score += el * 2;
           summed = true;
         } else {
           !summed && arr2.push(el);
@@ -67,7 +81,6 @@
       numbers[index] = arr2;
       numbers[index].push(...Array(4 - arr2.length).fill(0));
     });
-    // console.log(numbers);
   };
 
   const keyPress = (e) => {
@@ -79,7 +92,7 @@
         console.log("You pressed down");
         break;
       case 37:
-        // console.log("You pressed left");
+        console.log("You pressed left");
         moveLeft();
         break;
       case 39:
@@ -136,3 +149,4 @@
     {/each}
   {/each}
 </main>
+<h1>Score is: {game.score}</h1>
