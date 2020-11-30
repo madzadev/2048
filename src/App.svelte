@@ -85,7 +85,9 @@
 
 <h1>2048 Game</h1>
 <main>
-  {#each Array(16) as _, i}
-    <div class="tile">{i + 1}</div>
+  {#each numbers as arr, i}
+    {#each arr as num, i}
+      <div class="tile">{num}</div>
+    {/each}
   {/each}
 </main>
