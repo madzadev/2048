@@ -6,9 +6,9 @@
 
   let numbers = [
     [2, 2, 4, 8],
-    [0, 2, 0, 0],
+    [0, 2, 2, 0],
     [0, 0, 0, 0],
-    [2, 0, 2, 0],
+    [2, 2, 2, 2],
   ];
 
   let colors = {
@@ -25,8 +25,51 @@
 
   const rand = () => Math.floor(Math.random() * Math.floor(3));
 
+  let vArr = [[], [], [], []];
+  const vert = () => {
+    numbers.forEach((el, index) => {
+      el.forEach((el, index) => {
+        vArr[index].push(el);
+      });
+    });
+    console.log(vArr);
+
+    vArr.forEach((el, index) => {
+      let arr = el.filter((num) => num !== 0);
+      let arr2 = [];
+      let summed = false;
+      arr.forEach((el, index) => {
+        if (el === arr[index + 1]) {
+          if (!summed || (summed && index == 2)) {
+            arr2.push(el * 2);
+            game.score += el * 2;
+          }
+          summed = true;
+        } else {
+          !summed && arr2.push(el);
+          summed = false;
+        }
+      });
+
+      // console.log(arr2);
+
+      vArr[index] = arr2;
+      vArr[index].push(...Array(4 - arr2.length).fill(0));
+    });
+    console.log(vArr);
+
+    vArr.forEach((el, index1) => {
+      el.forEach((el, index2) => {
+        // console.log(el);
+        numbers[index2][index1] = el;
+      });
+      // console.log(el);
+    });
+  };
+
   const moveUp = () => {
     console.log("moved up");
+    vert();
   };
 
   const moveDown = () => {
@@ -38,11 +81,12 @@
       let arr = el.filter((num) => num !== 0);
       let arr2 = [];
       let summed = false;
-
       arr.forEach((el, index) => {
         if (el === arr[index + 1]) {
-          !summed && arr2.push(el * 2);
-          game.score += el * 2;
+          if (!summed || (summed && index == 2)) {
+            arr2.push(el * 2);
+            game.score += el * 2;
+          }
           summed = true;
         } else {
           !summed && arr2.push(el);
@@ -67,8 +111,10 @@
 
       arr.forEach((el, index) => {
         if (el === arr[index + 1]) {
-          !summed && arr2.push(el * 2);
-          game.score += el * 2;
+          if (!summed || (summed && index == 2)) {
+            arr2.push(el * 2);
+            game.score += el * 2;
+          }
           summed = true;
         } else {
           !summed && arr2.push(el);
@@ -87,6 +133,7 @@
     switch (e.keyCode) {
       case 38:
         console.log("You pressed up");
+        moveUp();
         break;
       case 40:
         console.log("You pressed down");
