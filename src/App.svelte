@@ -5,7 +5,7 @@
   };
 
   let numbers = [
-    [0, 2, 4, 8],
+    [2, 2, 4, 8],
     [0, 2, 0, 0],
     [0, 0, 0, 0],
     [2, 0, 2, 0],
@@ -53,42 +53,16 @@
       let summed = false;
 
       arr.forEach((el, index) => {
-        if (!summed) {
-          if (el === arr[index + 1]) {
-            arr2.push(el * 2);
-            summed = true;
-          } else {
-            arr2.push(el);
-          }
+        if (el === arr[index + 1]) {
+          !summed && arr2.push(el * 2);
+          summed = true;
+        } else {
+          !summed && arr2.push(el);
+          summed = false;
         }
-        summed = true;
       });
 
       console.log(arr2);
-
-      // let sumArr = [];
-      // let first = 0;
-      // let second = 0;
-      // let summed = false;
-
-      // arr.forEach((el, index) => {
-      //   if (index < arr.length - 1) {
-      //     first = el;
-      //     second = arr[index + 1];
-      //     console.log(first, second);
-      //   }
-      //   if (!summed) {
-      //     if (first != 0 && second != 0) {
-      //       if (first == second) {
-      //         sumArr.push(first + second);
-      //         summed = true;
-      //       } else {
-      //         sumArr.push(first);
-      //       }
-      //     }
-      //   }
-      //   summed = false;
-      // });
 
       numbers[index] = arr2;
       numbers[index].push(...Array(4 - arr2.length).fill(0));
