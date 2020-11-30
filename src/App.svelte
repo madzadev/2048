@@ -64,12 +64,6 @@
         summed = true;
       });
 
-      // let arr2 = arr.reduce(function (a, b) {
-      //   if (a === b) {
-      //     return a + b;
-      //   }
-      // });
-
       console.log(arr2);
 
       // let sumArr = [];
