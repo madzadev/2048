@@ -38,6 +38,31 @@
   const moveLeft = () => {
     numbers.forEach((el, index) => {
       let arr = el.filter((num) => num !== 0);
+
+      // let sumArr = [];
+      // let first = 0;
+      // let second = 0;
+      // let summed = false;
+
+      // arr.forEach((el, index) => {
+      //   if (index < arr.length - 1) {
+      //     first = el;
+      //     second = arr[index + 1];
+      //     console.log(first, second);
+      //   }
+      //   if (!summed) {
+      //     if (first != 0 && second != 0) {
+      //       if (first == second) {
+      //         sumArr.push(first + second);
+      //         summed = true;
+      //       } else {
+      //         sumArr.push(first);
+      //       }
+      //     }
+      //   }
+      //   summed = false;
+      // });
+
       numbers[index] = arr;
       numbers[index].push(...Array(4 - arr.length).fill(0));
     });
@@ -107,7 +132,7 @@
 <main>
   {#each numbers as arr, i}
     {#each arr as num, i}
-      <div class="tile">{num}</div>
+      <div class="tile">{num !== 0 ? num : ''}</div>
     {/each}
   {/each}
 </main>
