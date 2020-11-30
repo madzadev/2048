@@ -1,9 +1,14 @@
 <script>
+  let game = {
+    score: 0,
+    best: 0,
+  };
+
   let numbers = [
     [0, 2, 4, 8],
     [0, 2, 0, 0],
     [0, 0, 0, 0],
-    [0, 0, 2, 0],
+    [2, 0, 2, 0],
   ];
 
   let colors = {
@@ -12,6 +17,10 @@
     8: "orange",
     16: "tomato",
     32: "crimson",
+  };
+
+  const reset = () => {
+    console.log("game reseted");
   };
 
   const createNumber = () => {
@@ -39,6 +48,30 @@
     numbers.forEach((el, index) => {
       let arr = el.filter((num) => num !== 0);
 
+      console.log(arr);
+      let arr2 = [];
+      let summed = false;
+
+      arr.forEach((el, index) => {
+        if (!summed) {
+          if (el === arr[index + 1]) {
+            arr2.push(el * 2);
+            summed = true;
+          } else {
+            arr2.push(el);
+          }
+        }
+        summed = true;
+      });
+
+      // let arr2 = arr.reduce(function (a, b) {
+      //   if (a === b) {
+      //     return a + b;
+      //   }
+      // });
+
+      console.log(arr2);
+
       // let sumArr = [];
       // let first = 0;
       // let second = 0;
@@ -63,10 +96,10 @@
       //   summed = false;
       // });
 
-      numbers[index] = arr;
-      numbers[index].push(...Array(4 - arr.length).fill(0));
+      numbers[index] = arr2;
+      numbers[index].push(...Array(4 - arr2.length).fill(0));
     });
-    console.log(numbers);
+    // console.log(numbers);
   };
 
   const keyPress = (e) => {
@@ -106,7 +139,6 @@
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, 1fr);
     gap: 20px;
-    /* border: 1px solid black; */
     background-color: #bbada0;
     padding: 20px;
     box-sizing: border-box;
