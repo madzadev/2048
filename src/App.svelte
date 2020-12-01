@@ -195,7 +195,7 @@
   .tile {
     width: 100%;
     height: 100%;
-    background-color: #eee4da;
+    background-color: #c9bbae;
     display: grid;
     place-items: center;
     font-size: 56px;
@@ -256,10 +256,11 @@
   {#each numbers as arr, i}
     {#each arr as num, i}
       <div
-        class="tile {num === 2 ? 'two' : num === 4 ? 'four' : num === 8 ? 'eight' : num === 16 ? 'sixteen' : num === 32 ? 'thirtytwo' : num === 64 ? 'sixtyfour' : num === 128 ? 'onetwoeight' : num === 256 ? 'twofivesix' : num === 512 ? 'fiveonetwo' : num === 1024 ? 'onezerotwofour' : num === 2048 ? 'twozerofoureight' : 'white'}">
+        class="tile {num === 2 ? 'two' : num === 4 ? 'four' : num === 8 ? 'eight' : num === 16 ? 'sixteen' : num === 32 ? 'thirtytwo' : num === 64 ? 'sixtyfour' : num === 128 ? 'onetwoeight' : num === 256 ? 'twofivesix' : num === 512 ? 'fiveonetwo' : num === 1024 ? 'onezerotwofour' : num === 2048 ? 'twozerofoureight' : ''}">
         {num !== 0 ? num : ''}
       </div>
     {/each}
   {/each}
 </main>
-<h1>Score is: {game.score}</h1>
+<h1>Score: {game.score}</h1>
+<button on:click={reset}>New game</button>
