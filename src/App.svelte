@@ -23,7 +23,28 @@
     console.log("game reseted");
   };
 
-  const rand = () => Math.floor(Math.random() * Math.floor(3));
+  const rand = () => {
+    let flat = numbers.flat();
+    let zeroPos = [];
+    flat.forEach((el, index) => {
+      if (el === 0) {
+        zeroPos.push(index);
+      }
+    });
+    console.log(flat);
+    console.log(zeroPos);
+    let rand = Math.floor(Math.random() * Math.floor(zeroPos.length));
+    let num = zeroPos[rand];
+
+    console.log(num);
+
+    let arrPos = Math.floor(num / 4);
+    let numPos = num - arrPos * 4;
+    console.log(arrPos);
+    console.log(numPos);
+
+    numbers[arrPos][numPos] = 2;
+  };
 
   let vArr = [[], [], [], []];
 
@@ -152,18 +173,22 @@
       case 38:
         console.log("You pressed up");
         moveUp();
+        rand();
         break;
       case 40:
         console.log("You pressed down");
         moveDown();
+        rand();
         break;
       case 37:
         console.log("You pressed left");
         moveLeft();
+        rand();
         break;
       case 39:
         console.log("You pressed right");
         moveRight();
+        rand();
         break;
     }
   };
