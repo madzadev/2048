@@ -34,7 +34,6 @@
         vArr[index].push(el);
       });
     });
-    console.log(vArr);
 
     vArr.forEach((el, index) => {
       let arr = el.filter((num) => num !== 0);
@@ -71,7 +70,6 @@
         vArr[index].push(el);
       });
     });
-    console.log(vArr);
 
     vArr.forEach((el, index) => {
       let arr = el.filter((num) => num !== 0);
@@ -93,7 +91,6 @@
       vArr[index] = arr2;
       vArr[index].unshift(...Array(4 - arr2.length).fill(0));
     });
-    console.log(vArr);
 
     vArr.forEach((el, index1) => {
       el.forEach((el, index2) => {
@@ -120,12 +117,9 @@
         }
       });
 
-      console.log(arr2);
-
       numbers[index] = arr2;
       numbers[index].unshift(...Array(4 - arr2.length).fill(0));
     });
-    console.log(numbers);
   };
 
   const moveLeft = () => {
@@ -147,8 +141,6 @@
           summed = false;
         }
       });
-
-      console.log(arr2);
 
       numbers[index] = arr2;
       numbers[index].push(...Array(4 - arr2.length).fill(0));
