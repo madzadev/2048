@@ -26,7 +26,8 @@
   const rand = () => Math.floor(Math.random() * Math.floor(3));
 
   let vArr = [[], [], [], []];
-  const vert = () => {
+
+  const moveUp = () => {
     vArr = [[], [], [], []];
     numbers.forEach((el, index) => {
       el.forEach((el, index) => {
@@ -52,29 +53,53 @@
         }
       });
 
-      // console.log(arr2);
-
       vArr[index] = arr2;
       vArr[index].push(...Array(4 - arr2.length).fill(0));
+    });
+
+    vArr.forEach((el, index1) => {
+      el.forEach((el, index2) => {
+        numbers[index2][index1] = el;
+      });
+    });
+  };
+
+  const moveDown = () => {
+    vArr = [[], [], [], []];
+    numbers.forEach((el, index) => {
+      el.forEach((el, index) => {
+        vArr[index].push(el);
+      });
+    });
+    console.log(vArr);
+
+    vArr.forEach((el, index) => {
+      let arr = el.filter((num) => num !== 0);
+      let arr2 = [];
+      let summed = false;
+      arr.forEach((el, index) => {
+        if (el === arr[index + 1]) {
+          if (!summed || (summed && index == 2)) {
+            arr2.push(el * 2);
+            game.score += el * 2;
+          }
+          summed = true;
+        } else {
+          !summed && arr2.push(el);
+          summed = false;
+        }
+      });
+
+      vArr[index] = arr2;
+      vArr[index].unshift(...Array(4 - arr2.length).fill(0));
     });
     console.log(vArr);
 
     vArr.forEach((el, index1) => {
       el.forEach((el, index2) => {
-        // console.log(el);
         numbers[index2][index1] = el;
       });
-      // console.log(el);
     });
-  };
-
-  const moveUp = () => {
-    console.log("moved up");
-    vert();
-  };
-
-  const moveDown = () => {
-    console.log("moved up");
   };
 
   const moveRight = () => {
@@ -138,6 +163,7 @@
         break;
       case 40:
         console.log("You pressed down");
+        moveDown();
         break;
       case 37:
         console.log("You pressed left");
