@@ -27,6 +27,7 @@
 
   let vArr = [[], [], [], []];
   const vert = () => {
+    vArr = [[], [], [], []];
     numbers.forEach((el, index) => {
       el.forEach((el, index) => {
         vArr[index].push(el);
