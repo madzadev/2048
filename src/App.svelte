@@ -203,6 +203,50 @@
     color: #776e65;
     font-weight: bold;
   }
+
+  .two {
+    background-color: #eee4da;
+  }
+
+  .four {
+    background-color: #ede0c8;
+  }
+
+  .eight {
+    background-color: #f2b179;
+  }
+
+  .sixteen {
+    background-color: #f59563;
+  }
+
+  .thirtytwo {
+    background-color: #f67c60;
+  }
+
+  .sixtyfour {
+    background-color: #f65e3b;
+  }
+
+  .onetwoeight {
+    background-color: #edcf73;
+  }
+
+  .twofivesix {
+    background-color: #edcc62;
+  }
+
+  .fiveonetwo {
+    background-color: #edc850;
+  }
+
+  .onezerotwofour {
+    background-color: #edc53f;
+  }
+
+  .twozerofoureight {
+    background-color: #edc22d;
+  }
 </style>
 
 <svelte:window on:keydown={keyPress} />
@@ -211,7 +255,10 @@
 <main>
   {#each numbers as arr, i}
     {#each arr as num, i}
-      <div class="tile">{num !== 0 ? num : ''}</div>
+      <div
+        class="tile {num === 2 ? 'two' : num === 4 ? 'four' : num === 8 ? 'eight' : num === 16 ? 'sixteen' : num === 32 ? 'thirtytwo' : num === 64 ? 'sixtyfour' : num === 128 ? 'onetwoeight' : num === 256 ? 'twofivesix' : num === 512 ? 'fiveonetwo' : num === 1024 ? 'onezerotwofour' : num === 2048 ? 'twozerofoureight' : 'white'}">
+        {num !== 0 ? num : ''}
+      </div>
     {/each}
   {/each}
 </main>
