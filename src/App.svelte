@@ -128,13 +128,12 @@
   };
 
   const moveRight = () => {
-    let arr2;
     let original = numbers.map((x) => x);
     let modified = [];
 
     numbers.forEach((el, index) => {
       let arr = el.filter((num) => num !== 0);
-      arr2 = [];
+      let arr2 = [];
       let summed = false;
 
       arr.forEach((el, index) => {
@@ -163,10 +162,13 @@
   };
 
   const moveLeft = () => {
+    let original = numbers.map((x) => x);
+    let modified = [];
+
     numbers.forEach((el, index) => {
       let arr = el.filter((num) => num !== 0);
-
       let arr2 = [];
+
       let summed = false;
 
       arr.forEach((el, index) => {
@@ -182,9 +184,14 @@
         }
       });
 
+      modified.push(arr2);
       numbers[index] = arr2;
       numbers[index].push(...Array(4 - arr2.length).fill(0));
     });
+
+    if (JSON.stringify(original) !== JSON.stringify(modified)) {
+      rand();
+    }
   };
 
   const keyPress = (e) => {
@@ -202,7 +209,6 @@
       case 37:
         console.log("You pressed left");
         moveLeft();
-        rand();
         break;
       case 39:
         console.log("You pressed right");
