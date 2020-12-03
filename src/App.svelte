@@ -56,6 +56,8 @@
   let vArr = [[], [], [], []];
 
   const moveUp = () => {
+    let original = JSON.parse(JSON.stringify(numbers));
+
     vArr = [[], [], [], []];
     numbers.forEach((el, index) => {
       el.forEach((el, index) => {
@@ -89,9 +91,18 @@
         numbers[index2][index1] = el;
       });
     });
+
+    // console.log("initial1: " + original);
+    // console.log("initial2: " + numbers);
+
+    if (JSON.stringify(original) !== JSON.stringify(numbers)) {
+      rand();
+    }
   };
 
   const moveDown = () => {
+    let original = JSON.parse(JSON.stringify(numbers));
+
     vArr = [[], [], [], []];
     numbers.forEach((el, index) => {
       el.forEach((el, index) => {
@@ -125,6 +136,10 @@
         numbers[index2][index1] = el;
       });
     });
+
+    if (JSON.stringify(original) !== JSON.stringify(numbers)) {
+      rand();
+    }
   };
 
   const moveRight = () => {
@@ -199,12 +214,10 @@
       case 38:
         console.log("You pressed up");
         moveUp();
-        rand();
         break;
       case 40:
         console.log("You pressed down");
         moveDown();
-        rand();
         break;
       case 37:
         console.log("You pressed left");
@@ -213,7 +226,6 @@
       case 39:
         console.log("You pressed right");
         moveRight();
-
         break;
     }
   };
@@ -314,4 +326,5 @@
   {/each}
 </main>
 <h1>Score: {game.score}</h1>
+<h1>Best: {game.best}</h1>
 <button on:click={reset}>New game</button>
