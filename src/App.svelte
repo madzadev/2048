@@ -8,7 +8,7 @@
     [0, 0, 0, 0],
     [0, 0, 2, 0],
     [0, 0, 0, 0],
-    [0, 2, 0, 0],
+    [2, 2, 2, 0],
   ];
 
   let colors = {
@@ -128,10 +128,15 @@
   };
 
   const moveRight = () => {
+    let arr2;
+    let original = numbers.map((x) => x);
+    let modified = [];
+
     numbers.forEach((el, index) => {
       let arr = el.filter((num) => num !== 0);
-      let arr2 = [];
+      arr2 = [];
       let summed = false;
+
       arr.forEach((el, index) => {
         if (el === arr[index + 1]) {
           if (!summed || (summed && index == 2)) {
@@ -144,10 +149,17 @@
           summed = false;
         }
       });
-
+      modified.push(arr2);
       numbers[index] = arr2;
       numbers[index].unshift(...Array(4 - arr2.length).fill(0));
     });
+
+    // console.log("initial1: " + original);
+    // console.log("initial2: " + modified);
+
+    if (JSON.stringify(original) !== JSON.stringify(modified)) {
+      rand();
+    }
   };
 
   const moveLeft = () => {
@@ -195,7 +207,7 @@
       case 39:
         console.log("You pressed right");
         moveRight();
-        rand();
+
         break;
     }
   };
@@ -225,6 +237,7 @@
   }
 
   .tile {
+    font-family: "Goldman", cursive;
     width: 100%;
     height: 100%;
     background-color: #c9bbae;
