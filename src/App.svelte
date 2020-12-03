@@ -43,7 +43,14 @@
     console.log(arrPos);
     console.log(numPos);
 
-    numbers[arrPos][numPos] = 2;
+    if (arrPos != NaN && numPos != NaN) {
+      console.log("this runs");
+      numbers[arrPos][numPos] = 2;
+    }
+
+    if (zeroPos.length === 0) {
+      console.log("Game over");
+    }
   };
 
   let vArr = [[], [], [], []];
