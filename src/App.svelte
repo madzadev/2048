@@ -31,25 +31,25 @@
         zeroPos.push(index);
       }
     });
-    console.log(flat);
-    console.log(zeroPos);
+    // console.log(flat);
+    // console.log(zeroPos);
     let rand = Math.floor(Math.random() * Math.floor(zeroPos.length));
     let num = zeroPos[rand];
 
-    console.log(num);
+    // console.log(num);
 
     let arrPos = Math.floor(num / 4);
     let numPos = num - arrPos * 4;
-    console.log(arrPos);
-    console.log(numPos);
+    // console.log(arrPos);
+    // console.log(numPos);
 
     if (arrPos != NaN && numPos != NaN) {
-      console.log("this runs");
+      // console.log("this runs");
       numbers[arrPos][numPos] = 2;
     }
 
     if (zeroPos.length === 0) {
-      console.log("Game over");
+      // console.log("Game over");
     }
   };
 
@@ -151,6 +151,7 @@
       let arr2 = [];
       let summed = false;
 
+      console.log(arr);
       arr.forEach((el, index) => {
         if (el === arr[index + 1]) {
           if (!summed || (summed && index == 2)) {
@@ -185,6 +186,8 @@
       let arr2 = [];
 
       let summed = false;
+
+      console.log(arr);
 
       arr.forEach((el, index) => {
         if (el === arr[index + 1]) {
