@@ -5,10 +5,10 @@
   };
 
   let numbers = [
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [4, 2, 2, 2],
+    [0, 2, 0, 0],
+    [0, 2, 0, 0],
+    [0, 2, 0, 0],
+    [0, 4, 2, 2],
   ];
 
   let colors = {
@@ -68,17 +68,13 @@
     vArr.forEach((el, index) => {
       let arr = el.filter((num) => num !== 0);
       let arr2 = [];
-      let summed = false;
       arr.forEach((el, index) => {
         if (el === arr[index + 1]) {
-          if (!summed || (summed && index == 2)) {
-            arr2.push(el * 2);
-            game.score += el * 2;
-          }
-          summed = true;
+          arr.splice(index + 1, 1);
+          arr2.push(el * 2);
+          game.score += el * 2;
         } else {
-          !summed && arr2.push(el);
-          summed = false;
+          arr2.push(el);
         }
       });
 
@@ -111,22 +107,19 @@
     });
 
     vArr.forEach((el, index) => {
-      let arr = el.filter((num) => num !== 0);
+      let arr = el.filter((num) => num !== 0).reverse();
       let arr2 = [];
-      let summed = false;
       arr.forEach((el, index) => {
         if (el === arr[index + 1]) {
-          if (!summed || (summed && index == 2)) {
-            arr2.push(el * 2);
-            game.score += el * 2;
-          }
-          summed = true;
+          arr.splice(index + 1, 1);
+          arr2.push(el * 2);
+          game.score += el * 2;
         } else {
-          !summed && arr2.push(el);
-          summed = false;
+          arr2.push(el);
         }
       });
 
+      arr2.reverse();
       vArr[index] = arr2;
       vArr[index].unshift(...Array(4 - arr2.length).fill(0));
     });
@@ -150,7 +143,6 @@
       let arr = el.filter((num) => num !== 0).reverse();
       let arr2 = [];
 
-      console.log(arr);
       arr.forEach((el, index) => {
         if (el === arr[index + 1]) {
           arr.splice(index + 1, 1);
@@ -160,6 +152,7 @@
           arr2.push(el);
         }
       });
+
       arr2.reverse();
       modified.push(arr2);
       numbers[index] = arr2;
@@ -174,10 +167,6 @@
     }
   };
 
-  // 2 2 2 2
-  // 2 3 2 2
-  // 4 2 2 4
-
   const moveLeft = () => {
     let original = numbers.map((x) => x);
     let modified = [];
@@ -185,8 +174,6 @@
     numbers.forEach((el, index) => {
       let arr = el.filter((num) => num !== 0);
       let arr2 = [];
-
-      console.log(arr);
 
       arr.forEach((el, index) => {
         if (el === arr[index + 1]) {
