@@ -56,9 +56,10 @@
       // console.log("this runs");
       numbers[arrPos][numPos] = 2;
     }
+    console.log("zeropos is: " + zeroPos);
 
-    if (zeroPos.length === 0) {
-      // console.log("Game over");
+    if (!zeroPos) {
+      console.log("Game over");
     }
   };
 
@@ -171,8 +172,8 @@
       numbers[index].unshift(...Array(4 - arr2.length).fill(0));
     });
 
-    // console.log("initial1: " + original);
-    // console.log("initial2: " + modified);
+    console.log("initial1: " + original);
+    console.log("initial2: " + modified);
 
     if (JSON.stringify(original) !== JSON.stringify(modified)) {
       rand();
