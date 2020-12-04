@@ -5,10 +5,10 @@
   };
 
   let numbers = [
-    [0, 2, 0, 0],
-    [0, 2, 0, 0],
-    [0, 2, 0, 0],
-    [0, 4, 2, 2],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
   ];
 
   let colors = {
@@ -21,6 +21,15 @@
 
   const reset = () => {
     console.log("game reseted");
+    numbers = [
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
+    ];
+    game.score = 0;
+    rand();
+    rand();
   };
 
   const rand = () => {
@@ -52,6 +61,9 @@
       // console.log("Game over");
     }
   };
+
+  rand();
+  rand();
 
   let vArr = [[], [], [], []];
 
