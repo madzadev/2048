@@ -40,23 +40,16 @@
         zeroPos.push(index);
       }
     });
-    // console.log(flat);
-    // console.log(zeroPos);
+
     let rand = Math.floor(Math.random() * Math.floor(zeroPos.length));
     let num = zeroPos[rand];
 
-    // console.log(num);
-
     let arrPos = Math.floor(num / 4);
     let numPos = num - arrPos * 4;
-    // console.log(arrPos);
-    // console.log(numPos);
 
     if (arrPos != NaN && numPos != NaN) {
-      // console.log("this runs");
       numbers[arrPos][numPos] = 2;
     }
-    console.log("zeropos is: " + zeroPos);
 
     if (!zeroPos) {
       console.log("Game over");
@@ -105,6 +98,7 @@
     // console.log("initial2: " + numbers);
 
     if (JSON.stringify(original) !== JSON.stringify(numbers)) {
+      console.log("test");
       rand();
     }
   };
