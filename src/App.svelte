@@ -59,6 +59,12 @@
   rand();
   rand();
 
+  const gameOver = (arr) => {
+    if (!arr.flat().includes(0)) {
+      console.log("game over");
+    }
+  };
+
   let vArr = [[], [], [], []];
 
   const moveUp = () => {
@@ -94,13 +100,11 @@
       });
     });
 
-    // console.log("initial1: " + original);
-    // console.log("initial2: " + numbers);
-
     if (JSON.stringify(original) !== JSON.stringify(numbers)) {
-      console.log("test");
       rand();
     }
+
+    gameOver(numbers);
   };
 
   const moveDown = () => {
@@ -140,6 +144,8 @@
     if (JSON.stringify(original) !== JSON.stringify(numbers)) {
       rand();
     }
+
+    gameOver(numbers);
   };
 
   const moveRight = () => {
