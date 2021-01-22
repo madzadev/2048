@@ -231,17 +231,46 @@
 </script>
 
 <style>
-  h1 {
+.header {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    max-width: 500px;
+    margin: 0 auto;
+    align-items: center;
+  }
+  .title {
+    font-size:60px;
     text-align: center;
     margin: 30px 0;
     font-family: "Goldman", cursive;
     color: #776e65;
-    font-size: 40px;
+  }
+  .score-box {
+    background-color:  #C9BBAE;
+    padding: 3px 0px;
+    text-align: center;
+    width: 100px;
+    height:65px;
+    border-radius: 5px;
   }
 
+  .score-title{
+font-size:20px;
+color:  #eee4da;
+  }
+
+  .score-number {
+    font-size:30px;
+    color: white;
+  }
+
+  .second{
+margin-left: 10px;
+  } 
+
   main {
-    max-width: 600px;
-    height: 600px;
+    max-width: 500px;
+    min-height: 500px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -260,7 +289,7 @@
     background-color: #c9bbae;
     display: grid;
     place-items: center;
-    font-size: 56px;
+    font-size: 3em;
     border-radius: 5px;
     color: #776e65;
     font-weight: bold;
@@ -309,11 +338,42 @@
   .twozerofoureight {
     background-color: #edc22d;
   }
+
+  .reset-box {
+    max-width: 500px;
+    margin: 20px auto;
+    color: #776e65;
+    text-align: right;
+    padding: 0 5px;
+  }
+
+  .reset-box h1:hover {
+color: #bbada0;
+cursor: pointer;
+  }
+
+  .rules-box {
+     max-width: 500px;
+    margin: 0 auto;
+  }
+  
 </style>
 
 <svelte:window on:keydown={keyPress} />
 
-<h1>2048 Game</h1>
+
+<div class="header">
+  <h1 class="title">2048</h1>
+  <div class="score-box">
+    <p class="score-title">Score</p>
+    <p class="score-number">{game.score}</p>
+  </div>
+  <div class="score-box second">
+    <p class="score-title">Best</p>
+    <p class="score-number">{game.best}</p>
+  </div>
+
+</div>
 <main>
   {#each numbers as arr, i}
     {#each arr as num, i}
@@ -324,6 +384,12 @@
     {/each}
   {/each}
 </main>
-<h1>Score: {game.score}</h1>
-<h1>Best: {game.best}</h1>
-<button on:click={reset}>New game</button>
+<div class="reset-box">
+<h1 on:click={reset}>Reset</h1>
+</div>
+<div class="rules-box">
+  <p>HOW TO PLAY: Use your arrow keys to move the tiles. Tiles with the same number merge into one when they touch. Add them up to reach 2048!</p>
+</div>
+
+
+
